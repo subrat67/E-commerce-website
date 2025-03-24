@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Background video */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Login container */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+        }
+
+        /* Animated card */
+        .login-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 40px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-card form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-card .input-group {
+            margin-bottom: 15px;
+        }
+
+        .login-card .input-group label {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .login-card .input-group input {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .login-card .login-btn {
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #ff6a00, #ee0979);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .login-card .login-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .login-card .login-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .login-card .login-footer a {
+            color: #ff6a00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .login-card .login-footer a:hover {
+            color: #ee0979;
+        }
+
+        /* Optional: Particle effect (CSS animation) */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: move 5s linear infinite;
+        }
+
+        @keyframes move {
+            from {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="background-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="login-footer">
+                <a href="#">Forgot Password?</a>
+                <span> | </span>
+                <a href="#">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Effects -->
+    <div class="particles">
+        <!-- Generate particles dynamically with JavaScript -->
+    </div>
+
+    <script>
+        // Particle generator
+        const particlesContainer = document.querySelector('.particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            particle.style.opacity = Math.random();
+            particlesContainer.appendChild(particle);
+        }
+
+        // Handle login button redirection
+        const loginForm = document.getElementById("login-form");
+        loginForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = "index.html"; // Redirect to index.html
+        });
+    </script>
+</body>
+</html>

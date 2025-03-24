@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <style>
+    /* Add your CSS styling for cart display */
+    .cart-container {
+      margin: 20px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Cart</h1>
+  <div class="cart-container" id="cart-container"></div>
+  <p id="total-price"></p>
+
+  <script>
+    // Retrieve cart data from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const cartContainer = document.getElementById('cart-container');
+    const totalPriceElement = document.getElementById('total-price');
+
+    if (cart.length === 0) {
+      cartContainer.innerHTML = '<p>Your cart is empty!</p>';
+    } else {
+      let totalPrice = 0;
+
+      cart.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+
+        itemElement.innerHTML = `
+          <span>${item.name}</span>
+          <span>$${item.price.toFixed(2)}</span>
+          <span>Quantity: ${item.quantity}</span>
+          <span>Total: $${(item.price * item.quantity).toFixed(2)}</span>
+        `;
+
+        cartContainer.appendChild(itemElement);
+        totalPrice += item.price * item.quantity;
+      });
+
+      totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
