@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+    #qr-code, #upi-id-container {
+      display: none;
+      margin-top: 10px;
+    }
+    #qr-image {
+      display: block;
+      margin: auto;
+      max-width: 300px; /* Increased size */
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Payment Details</h2>
+    <form id="paymentForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" placeholder="Enter your address" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+      
+      <label for="payment-method">Select Payment Method:</label>
+      <select id="payment-method" name="payment-method" onchange="handlePaymentMethodChange()" required>
+        <option value="">Select Payment Method</option>
+        <option value="cod">Cash on Delivery</option>
+        <option value="upi">UPI Payment</option>
+        <option value="qr">QR Code</option>
+      </select>
+      <div id="upi-id-container">
+        <label for="upi-id">Enter UPI ID:</label>
+        <input type="text" id="upi-id" placeholder="Enter your UPI ID">
+        <button type="button" onclick="makeUpiPayment()">Make UPI Payment</button>
+      </div>
+      <div id="qr-code">
+        <p>Scan the QR Code to make the payment:</p>
+        <img id="qr-image" src="scanner.jpeg" alt="QR Code">
+      </div>
+      
+      <button type="button" onclick="handlePayment()">Pay Now</button>
+    </form>
+  </div>
+
+  <script>
+    function handlePaymentMethodChange() {
+      const paymentMethod = document.getElementById("payment-method").value;
+      const qrCodeContainer = document.getElementById("qr-code");
+      const upiIdContainer = document.getElementById("upi-id-container");
+
+      // Hide all dynamic elements initially
+      qrCodeContainer.style.display = "none";
+      upiIdContainer.style.display = "none";
+
+      if (paymentMethod === "upi") {
+        // Show UPI ID input field
+        upiIdContainer.style.display = "block";
+      } else if (paymentMethod === "qr") {
+        // Show QR Code
+        qrCodeContainer.style.display = "block";
+      }
+    }
+
+    function makeUpiPayment() {
+      const upiId = document.getElementById("upi-id").value;
+      if (upiId) {
+        alert(`Payment initiated for UPI ID: ${upiId}. Please complete the payment in your UPI app.`);
+      } else {
+        alert("Please enter your UPI ID to proceed.");
+      }
+    }
+
+    function confirmQrPayment() {
+      alert("Payment confirmed via QR Code. Thank you!");
+    }
+
+    function handlePayment() {
+      const paymentMethod = document.getElementById("payment-method").value;
+      
+      if (paymentMethod === "cod") {
+        alert("You have selected Cash on Delivery. Your order is placed!");
+      } else if (paymentMethod === "upi") {
+        const upiId = document.getElementById("upi-id").value;
+        if (upiId) {
+          alert(`Payment initiated for UPI ID: ${upiId}. Please complete the payment in your UPI app.`);
+        } else {
+          alert("Please enter your UPI ID to proceed.");
+        }
+      } else if (paymentMethod === "qr") {
+        alert("Scan the QR Code to make the payment.");
+      } else {
+        alert("Please select a payment method!");
+      }
+    }
+  </script>
+</body>
+</html>
