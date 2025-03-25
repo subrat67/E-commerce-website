@@ -1,3 +1,4 @@
+
 <!DOCTYPE html> 
 <html lang="en">
   <head>
@@ -6,7 +7,6 @@
     <title>TREND-VIBE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
-
   </head>
   <body>
     <header>
@@ -79,21 +79,21 @@
         </div>
         <div class="button-container">
           <button class="add-to-cart" onclick="addToCart('Clothes', 100.00,'box1_image.jpg')">Add to Cart</button>
-<button class="buy-now" onclick="buyNow('Clothes', 100.00)">Buy Now</button>
+          <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
         </div>
       </div>
       <div class="box">
         <div class="box-content">
-          <h2>Health & personal care</h2>
+          <h2>shirts</h2>
           <div
             class="box-img"
-            style="background-image: url('box2_image.jpg')"
+            style="background-image: url('shirt.jpeg')"
           ></div>
           <p>See More</p>
         </div>
         <div class="button-container">
-        <button class="add-to-cart" onclick="addToCart('personal-care', 50.00,'box2_image.jpg')">Add to Cart</button>
-<button class="buy-now" onclick="buyNow('health-care', 50.00)">Buy Now</button>
+        <button class="add-to-cart" onclick="addToCart('personal-care', 50.00,'shirt.jpeg')">Add to Cart</button>
+        <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
       </div>
       </div>
       <div class="box">
@@ -107,7 +107,7 @@
         </div>
         <div class="button-container">
           <button class="add-to-cart" onclick="addToCart('Furnrites', 250.00,'box3_image.jpg')">Add to Cart</button>
-<button class="buy-now" onclick="buyNow('Furnrites', 250.00)">Buy Now</button>
+          <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
         </div>
       </div>
       <div class="box">
@@ -121,7 +121,7 @@
         </div>
         <div class="button-container">
           <button class="add-to-cart" onclick="addToCart('Electronics', 350.00,'box4_image.jpg')">Add to Cart</button>
-          <button class="buy-now" onclick="buyNow('Electronics', 350.00)">Buy Now</button>
+          <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
         </div>
       </div>
 <div class="box">
@@ -135,7 +135,7 @@
         </div>
         <div class="button-container">
           <button class="add-to-cart" onclick="addToCart('beauty products', 240.00,'box5_image.jpg')">Add to Cart</button>
-        <button class="buy-now" onclick="buyNow('Beauty-product', 240.00)">Buy Now</button>
+          <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
         </div>
       </div>
       <div class="box">
@@ -149,7 +149,7 @@
         </div>
         <div class="button-container">
           <button class="add-to-cart" onclick="addToCart('Clothes', 33.00,'box6_image.jpg')">Add to Cart</button>
-<button class="buy-now" onclick="buyNow('pet-care', 33.00)">Buy Now</button>
+          <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
         </div>
       </div>
       <div class="box">
@@ -163,7 +163,7 @@
         </div>
         <div class="button-container">
           <button class="add-to-cart" onclick="addToCart('Toys', 10.00,'box7_image.jpg')">Add to Cart</button>
-<button class="buy-now" onclick="buyNow('Toys', 10.00)">Buy Now</button>
+          <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
         </div>
       </div>
       <div class="box">
@@ -177,10 +177,16 @@
         </div>
         <div class="button-container">
           <button class="add-to-cart" onclick="addToCart('shoes', 230.00,'shoes.jpg')">Add to Cart</button>
-<button class="buy-now" onclick="buyNow('Shoes', 10.00)">Buy Now</button>
+          <button class="buy-now" onclick="redirectToForm()">Buy Now</button>
         </div>
       </div>
     </div>
+      <script>
+  function redirectToForm() {
+    window.location.href = "payment-form.html";
+  }
+</script>
+    </script>
     <script src="main.js">
   </script>  
       <script src="search.js">
