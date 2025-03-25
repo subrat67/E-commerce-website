@@ -40,21 +40,21 @@ function updateCartDisplay() {
       <img src="${item.image}" alt="${item.name}" style="width: 120px; height: 120px; margin-right: 20px; border-radius: 8px;" />
       <div style="flex-grow: 1;">
         <span style="display: block; font-size: 20px; font-weight: bold; margin-bottom: 5px;">${item.name}</span>
-        <span style="display: block; color: #555; font-size: 16px;">Price: $${item.price.toFixed(2)}</span>
+        <span style="display: block; color: #555; font-size: 16px;">Price: ₹${item.price.toFixed(2)}</span>
         <div class="quantity-controls" style="margin-top: 10px;">
           <button onclick="decrementItem('${item.name}')" style="padding: 8px 12px; font-size: 14px; cursor: pointer; border: 1px solid #ccc; background-color: #fff;">-</button>
           <span style="margin: 0 10px; font-size: 16px;">${item.quantity}</span>
           <button onclick="incrementItem('${item.name}')" style="padding: 8px 12px; font-size: 14px; cursor: pointer; border: 1px solid #ccc; background-color: #fff;">+</button>
         </div>
       </div>
-      <span style="font-size: 18px; font-weight: bold; white-space: nowrap;">Total: $${(item.price * item.quantity).toFixed(2)}</span>
+      <span style="font-size: 18px; font-weight: bold; white-space: nowrap;">Total: ₹${(item.price * item.quantity).toFixed(2)}</span>
     `;
 
     cartItems.appendChild(itemElement);
   });
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  totalContainer.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+  totalContainer.textContent = `Total Price: ₹${totalPrice.toFixed(2)}`;
 }
 
 function createCartUI() {
@@ -76,7 +76,7 @@ function createCartUI() {
     <button style="background: none; border: none; font-size: 16px; float: right; cursor: pointer;" onclick="toggleCart()">✖</button>
     <h2 style="font-size: 28px; margin-bottom: 20px;">Cart</h2>
     <div class="cart-items"></div>
-    <p class="cart-total" style="font-size: 20px; font-weight: bold; margin-top: 20px;">Total Price: $0.00</p>
+    <p class="cart-total" style="font-size: 20px; font-weight: bold; margin-top: 20px;">Total Price: ₹0.00</p>
   `;
 
   document.body.appendChild(cartContainer);
